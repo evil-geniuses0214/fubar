@@ -28,7 +28,7 @@ export default class App extends Component {
   }
 
   readProfile = () => {
-    fetch("http://localhost:3000/profiles")
+    fetch("/profiles")
     .then(response => response.json())
     .then(load => this.setState({profiles: load}))
     .catch(errors => console.log('Profile read errors:', errors))
