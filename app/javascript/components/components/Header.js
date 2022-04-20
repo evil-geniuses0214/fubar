@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import {NavLink} from "react-router-dom";
+import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom';
 import {
-    Navbar,
+    Collapse,
+    DropdownItem,
+    DropdownMenu,
+    DropdownToggle,
     Nav,
-    NavItem,
+    Navbar,
     NavbarBrand,
     NavbarToggler,
-    Collapse,
-    UncontrolledDropdown,
-    DropdownToggle, DropdownMenu, DropdownItem
+    NavItem,
+    UncontrolledDropdown
 } from 'reactstrap'
 
 
@@ -31,56 +33,56 @@ export default class Header extends Component {
                     </NavbarBrand>
                     <NavbarToggler onClick={function noRefCheck() {
                     }}/>
-                        <Collapse navbar>
-                            <Nav>
+                    <Collapse navbar>
+                        <Nav>
+                            <NavItem>
+                                <NavLink to="/" className="nav-link">Home</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink to="/aboutus" className="nav-link">About us</NavLink>
+                            </NavItem>
+                            {logged_in &&
+                                <UncontrolledDropdown inNavbar nav>
+                                    <DropdownToggle caret nav>Profile
+                                    </DropdownToggle>
+                                    <DropdownMenu end>
+                                        <DropdownItem>
+                                            <NavItem>
+                                                <NavLink to="/profile" className="nav-link">My Profile</NavLink>
+                                            </NavItem>
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            <NavItem>
+                                                <NavLink to="/profile/edit" className="nav-link">Edit Profile</NavLink>
+                                            </NavItem>
+                                        </DropdownItem>
+                                        <DropdownItem divider/>
+                                        <DropdownItem>
+                                            <NavItem>
+                                                <NavLink to="/view/all" className="nav-link">View All
+                                                    Profiles</NavLink>
+                                            </NavItem>
+                                        </DropdownItem>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
+                            }
+                            {logged_in &&
                                 <NavItem>
-                                    <NavLink to="/" className="nav-link">Home</NavLink>
+                                    <a href={sign_out_route} className="nav-link">Logout</a>
                                 </NavItem>
+                            }
+                            {!logged_in &&
                                 <NavItem>
-                                    <NavLink to="/aboutus" className="nav-link">About us</NavLink>
+                                    <a href={sign_in_route} className="nav-link">Login</a>
                                 </NavItem>
-                                {logged_in &&
-                                    <UncontrolledDropdown inNavbar nav>
-                                        <DropdownToggle caret nav>Profile
-                                        </DropdownToggle>
-                                        <DropdownMenu end>
-                                            <DropdownItem>
-                                                <NavItem>
-                                                    <NavLink to="/profile" className="nav-link">My Profile</NavLink>
-                                                </NavItem>
-                                            </DropdownItem>
-                                            <DropdownItem>
-                                                <NavItem>
-                                                    <NavLink to="/profile/edit" className="nav-link">Edit Profile</NavLink>
-                                                </NavItem>
-                                            </DropdownItem>
-                                            <DropdownItem divider/>
-                                            <DropdownItem>
-                                                <NavItem>
-                                                    <NavLink to="/view/all" className="nav-link">View All
-                                                        Profiles</NavLink>
-                                                </NavItem>
-                                            </DropdownItem>
-                                        </DropdownMenu>
-                                    </UncontrolledDropdown>
-                                }
-                                {logged_in &&
-                                    <NavItem>
-                                        <a href={sign_out_route} className="nav-link">Logout</a>
-                                    </NavItem>
-                                }
-                                {!logged_in &&
-                                    <NavItem>
-                                        <a href={sign_in_route} className="nav-link">Login</a>
-                                    </NavItem>
-                                }
-                                {!logged_in &&
-                                    <NavItem>
-                                        <a href={new_user_route} className="nav-link">Sign Up!</a>
-                                    </NavItem>
-                                }
-                            </Nav>
-                        </Collapse>
+                            }
+                            {!logged_in &&
+                                <NavItem>
+                                    <a href={new_user_route} className="nav-link">Sign Up!</a>
+                                </NavItem>
+                            }
+                        </Nav>
+                    </Collapse>
                 </Navbar>
             </>
         )
