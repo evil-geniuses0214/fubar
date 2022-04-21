@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Profile.destroy_all
 
 profiles = [
     {
@@ -41,20 +40,20 @@ profiles = [
       duty_station: 'Texas',
       about_me: 'Boy, I am two seconds from being on you like white on rice in a glass of milk on a paper plate in a snowstorm. Im gonna put my foot so far up your ass, the water on my knee will quench your thirst!!!'
     },
-    {
-      name: 'Michael',
-      picture: 'https://w0.peakpx.com/wallpaper/569/572/HD-wallpaper-abduction-eclipse-jacob-black-taylor-lautner-twilight.jpg',
-      branch_of_service: 'Army',
-      military_status: 'Retired',
-      city: 'Austin',
-      state: 'Texas',
-      favorite_beer: 'Red Horse',
-      duty_station: 'Texas',
-      about_me: 'My name is Jacob and I like to partyyyyy!!!'
-    }
+    # {
+    #   name: 'Michael',
+    #   picture: 'https://www.rollingstone.com/wp-content/uploads/2022/02/SnoopDogg-1.jpeg?resize=1800,1200&w=1200',
+    #   branch_of_service: 'Army',
+    #   military_status: 'Retired',
+    #   city: 'Austin',
+    #   state: 'Texas',
+    #   favorite_beer: 'Red Horse',
+    #   duty_station: 'Texas',
+    #   about_me: 'My name is Jacob and I like to partyyyyy!!!'
+    # }
 ]
 
-user = User.find 1
+user = User.find 2
 
 profiles.each do | value |
     user.create_profile value
