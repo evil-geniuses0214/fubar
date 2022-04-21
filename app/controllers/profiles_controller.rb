@@ -1,8 +1,9 @@
 class ProfilesController < ApplicationController
-    def index 
+    def index
         profiles = Profile.all
         render json: profiles
     end
+
     def destroy
         profile = Profile.find(params[:id])
         if profile.destroy
@@ -11,6 +12,7 @@ class ProfilesController < ApplicationController
             render json: profile.errors
         end
     end
+
     def update
         profile = Profile.find(params[:id])
         profile.update(profile_params)
