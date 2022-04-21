@@ -11,16 +11,15 @@ import MyProfile from "./pages/MyProfile";
 import Show from "./pages/Show";
 import PostList from "./pages/PostList";
 import NewPost from "./pages/NewPost";
-import Register from "./pages/Register"
+import Register from "./pages/Register";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 
 export default class App extends React.Component {
   constructor(props) {
-      super(props);
-      this.state = {
-          profiles: [],
-      }
+    super(props);
+    this.state = {
+      profiles: [],
+    };
   }
 
   componentDidMount() {
@@ -65,8 +64,8 @@ export default class App extends React.Component {
     fetch(`/profiles/${id}`, {
       headers: {
         "Content-Type": "application/json",
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-Token': token
+        "X-Requested-With": "XMLHttpRequest",
+        "X-CSRF-Token": token,
       },
       method: "DELETE",
     })
@@ -103,11 +102,17 @@ export default class App extends React.Component {
               path="/profile/:id"
               render={(props) => {
                 let id = props.match.params.id;
+                console.log(id);
                 let profile = this.state.profiles.find(
                   (profile) => profile.user_id === +id
                 );
                 console.log(profile);
-                return <MyProfile profile={profile} />;
+                return (
+                  <MyProfile
+                    profile={profile}
+                    deleteProfile={this.deleteProfile}
+                  />
+                );
               }}
             />
           )}
@@ -130,16 +135,25 @@ export default class App extends React.Component {
           )}
 
           {/* SHOW PROFILE */}
-          <Route path="/show/:id" render={(props) => {
+          <Route
+            path="/show/:id"
+            render={(props) => {
               let id = props.match.params.id;
               let profile = this.state.profiles.find(
-                (profile) => profile.id === +id);
+                (profile) => profile.id === +id
+              );
               return (
                 <Show profile={profile} deleteProfile={this.deleteProfile} />
               );
             }}
           />
-          <Route exact path="/create-profile" component={Register} />
+
+          {/* REGISTER */}
+          <Route
+            path="/create-profile"
+            render={(props) => <Register createProfile={this.createProfile} />}
+          />
+
           <Route exact path="/posts/view" component={PostList} />
           <Route exact path="/posts/new" component={NewPost} />
           <Route component={NotFound} />

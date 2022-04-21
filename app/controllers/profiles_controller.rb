@@ -15,7 +15,8 @@ class ProfilesController < ApplicationController
 
     def create
         if user_signed_in?
-            if profile = current_user.profile.create(profile_params)
+            profile = current_user.create_profile(profile_params)
+            if profile.valid?
                 render json: profile, status: :created
             else
                 render json: profile.errors, status: 400
