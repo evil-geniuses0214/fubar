@@ -13,6 +13,18 @@ class ProfilesController < ApplicationController
         end
     end
 
+    def create
+        if user_signed_in?
+            if profile = current_user.profile.create(profile_params)
+                render json: profile, status: :created
+            else
+                render json: profile.errors, status: 400
+            end
+        else
+            render json: {}, status: 401
+        end
+    end
+
     def update
         profile = Profile.find(params[:id])
         profile.update(profile_params)
