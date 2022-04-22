@@ -163,8 +163,13 @@ export default class App extends React.Component {
             render={(props) => <Register createProfile={this.createProfile} />}
           />
 
-          <Route path="/posts/view" component={PostList} />
+          {/* NEW POST */}
           <Route path="/posts/new" component={NewPost} />
+
+          {/* EDIT POST */}
+          <Route path="/posts/view" component={PostList} />
+
+          {/* NOT FOUND */}
           <Route component={NotFound} />
         </Switch>
         <Footer />
