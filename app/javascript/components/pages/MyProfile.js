@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import { Card, CardBody, CardText, Button } from "reactstrap";
 
 export default class MyProfile extends Component {
+  handleSubmit = () => {
+    this.props.deleteProfile(this.props.profile.id);
+  };
   render() {
     let { profile } = this.props;
     return (
@@ -11,6 +14,27 @@ export default class MyProfile extends Component {
           <img alt="Card image cap" src={profile.picture} width="20%" />
           <CardBody>
             <CardText>{profile.name}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.branch_of_service}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.military_status}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.city}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.state}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.favorite_beer}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.duty_station}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.about_me}</CardText>
           </CardBody>
           <CardBody>
             <NavLink to="/index">

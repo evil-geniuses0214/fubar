@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 import { Form, Label, Input, FormGroup, Button } from "reactstrap";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 
 export default class Edit extends Component {
   constructor(props) {
@@ -23,9 +22,9 @@ export default class Edit extends Component {
   }
 
   handleChange = (e) => {
-    let { newProfile } = this.state;
-    newProfile[e.target.name] = e.target.value;
-    this.setState({ newProfile: newProfile });
+    let { profile } = this.props;
+    profile[e.target.name] = e.target.value;
+    this.setState({ newProfile: profile });
   };
 
   handleSubmit = () => {
@@ -34,7 +33,7 @@ export default class Edit extends Component {
   };
 
   render() {
-    let { newProfile } = this.state;
+    let { profile } = this.props;
     return (
       <div>
         <Form className="new-format">
@@ -42,90 +41,81 @@ export default class Edit extends Component {
             <Label for="name">Name</Label>
             <Input
               name="name"
-              placeholder="Crytpo Name?"
               type="text"
               onChange={this.handleChange}
-              value={newProfile.name}
+              value={profile.name}
             />
           </FormGroup>
           <FormGroup>
             <Label for="picture">Image</Label>
             <Input
               name="picture"
-              placeholder="How long is it being developed?"
               type="url"
               onChange={this.handleChange}
-              value={newProfile.age}
+              value={profile.picture}
             />
           </FormGroup>
           <FormGroup>
             <Label for="branch_of_service">Service Branch</Label>
             <Input
               name="branch_of_service"
-              placeholder="Name the creator."
               type="text"
               onChange={this.handleChange}
-              value={newProfile.creator}
+              value={profile.branch_of_service}
             />
           </FormGroup>
           <FormGroup>
             <Label for="military_status">Military Status</Label>
             <Input
               name="military_status"
-              placeholder="Show me that coin."
               type="text"
               onChange={this.handleChange}
-              value={newProfile.image}
+              value={profile.military_status}
             />
           </FormGroup>
           <FormGroup>
             <Label for="city">City</Label>
             <Input
               name="city"
-              placeholder="Show me that coin."
               type="text"
               onChange={this.handleChange}
-              value={newProfile.image}
+              value={profile.city}
             />
           </FormGroup>
           <FormGroup>
             <Label for="state">State</Label>
             <Input
               name="state"
-              placeholder="Show me that coin."
               type="text"
               onChange={this.handleChange}
-              value={newProfile.image}
+              value={profile.state}
             />
           </FormGroup>
           <FormGroup>
             <Label for="favorite_beer">favorite_beer</Label>
             <Input
               name="favorite_beer"
-              placeholder="Show me that coin."
               type="text"
               onChange={this.handleChange}
-              value={newProfile.image}
+              value={profile.favorite_beer}
             />
           </FormGroup>
           <FormGroup>
             <Label for="duty_station">duty_station</Label>
             <Input
               name="duty_station"
-              placeholder="Show me that coin."
               type="text"
               onChange={this.handleChange}
-              value={newProfile.image}
+              value={profile.duty_station}
             />
           </FormGroup>
           <FormGroup>
             <Label for="about_me">about_me</Label>
             <Input
               name="about_me"
-              placeholder="Show me that coin."
               type="text"
               onChange={this.handleChange}
-              value={newProfile.image}
+              value={profile.about_me}
             />
           </FormGroup>
           <Button
@@ -134,10 +124,11 @@ export default class Edit extends Component {
             onClick={this.handleSubmit}
           >
             Edit
-            {this.state.submitted && (
-              <Redirect to={`/show/${this.props.profile.id}`} />
-            )}
+            {this.state.submitted && <Redirect to={`/profile/${profile.id}`} />}
           </Button>
+          <NavLink to={`/profile/${profile.id}`}>
+            <Button style={{ backgroundColor: "#39535c" }}>Cancel</Button>
+          </NavLink>
         </Form>
       </div>
     );
