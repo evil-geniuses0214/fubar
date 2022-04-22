@@ -16,6 +16,27 @@ export default class MyProfile extends Component {
             <CardText>{profile.name}</CardText>
           </CardBody>
           <CardBody>
+            <CardText>{profile.branch_of_service}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.military_status}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.city}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.state}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.favorite_beer}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.duty_station}</CardText>
+          </CardBody>
+          <CardBody>
+            <CardText>{profile.about_me}</CardText>
+          </CardBody>
+          <CardBody>
             <NavLink to="/index">
               <Button onClick={this.handleSubmit}>Delete Profile</Button>
             </NavLink>

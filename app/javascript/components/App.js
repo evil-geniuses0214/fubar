@@ -73,6 +73,20 @@ export default class App extends React.Component {
       .then((payload) => this.readProfile())
       .catch((errors) => console.log("Profile error:", errors));
   };
+  deleteProfile = (id) => {
+    let token = document.querySelector('meta[name="csrf-token"]').content;
+    fetch(`/profiles/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+        "X-CSRF-Token": token,
+      },
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((payload) => this.readProfile())
+      .catch((errors) => console.log("Profile error:", errors));
+  };
 
   render() {
     const { logged_in } = this.props;
@@ -102,11 +116,9 @@ export default class App extends React.Component {
               path="/profile/:id"
               render={(props) => {
                 let id = props.match.params.id;
-                console.log(id);
                 let profile = this.state.profiles.find(
                   (profile) => profile.user_id === +id
                 );
-                console.log(profile);
                 return (
                   <MyProfile
                     profile={profile}
@@ -118,21 +130,18 @@ export default class App extends React.Component {
           )}
 
           {/* EDIT PROFILE */}
-          {logged_in && (
-            <Route
-              path="/profileedit/:id"
-              render={(props) => {
-                let id = props.match.params.id;
-                let profile = this.state.profiles.find(
-                  (profile) => profile.user_id === +id
-                );
-                console.log(profile);
-                return (
-                  <Edit updateProfile={this.updateProfile} profile={profile} />
-                );
-              }}
-            />
-          )}
+          <Route
+            path="/profileedit/:id"
+            render={(props) => {
+              let id = props.match.params.id;
+              let profile = this.state.profiles.find(
+                (profile) => profile.user_id === +id
+              );
+              return (
+                <Edit updateProfile={this.updateProfile} profile={profile} />
+              );
+            }}
+          />
 
           {/* SHOW PROFILE */}
           <Route
@@ -154,8 +163,8 @@ export default class App extends React.Component {
             render={(props) => <Register createProfile={this.createProfile} />}
           />
 
-          <Route exact path="/posts/view" component={PostList} />
-          <Route exact path="/posts/new" component={NewPost} />
+          <Route path="/posts/view" component={PostList} />
+          <Route path="/posts/new" component={NewPost} />
           <Route component={NotFound} />
         </Switch>
         <Footer />
