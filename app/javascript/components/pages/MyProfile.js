@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Card, CardBody, CardText, Button } from "reactstrap";
+import {Card, CardBody, CardText, Button, Row, Col} from "reactstrap";
+import MyStatus from './PostList'
 
 export default class MyProfile extends Component {
+  constructor(props) {
+    super(props);
+  }
   handleSubmit = () => {
     this.props.deleteProfile(this.props.profile.id);
   };
@@ -10,6 +14,8 @@ export default class MyProfile extends Component {
     let { profile } = this.props;
     return (
       <div className="show-body">
+        <Row>
+          <Col md={4}>
         <Card>
           <img alt="Card image cap" src={profile.picture} width="20%" />
           <CardBody>
@@ -42,6 +48,11 @@ export default class MyProfile extends Component {
             </NavLink>
           </CardBody>
         </Card>
+        </Col>
+          <Col md={2}>
+            <MyStatus />
+          </Col>
+        </Row>
       </div>
     );
   }
