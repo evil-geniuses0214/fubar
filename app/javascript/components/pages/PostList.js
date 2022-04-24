@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { NavLink,Link } from 'react-router-dom'
-import {Card, CardBody, CardText, CardTitle} from "reactstrap";
+import { Button, Card, CardBody, CardText, CardTitle } from "reactstrap";
+
 
 class PostList extends Component {
-    state = {
-        posts: []
-    }
+        state = {
+            posts: [],
+        }
+
 
     componentDidMount() {
         fetch('/api/v1/posts')
@@ -13,6 +14,7 @@ class PostList extends Component {
             .then(posts => {
                 this.setState({
                     posts: posts
+
                 })
             })
     }
@@ -43,7 +45,6 @@ class PostList extends Component {
                 What are you up to?
               </h1>
                 {this.renderPosts()}
-                <Link to="/posts/new">New Post</Link>
             </div>
         )
     }
