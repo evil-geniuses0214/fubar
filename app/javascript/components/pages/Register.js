@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import {CustomInput, Button, Form, FormGroup, Input, Label, Col, Row} from "reactstrap";
 import { Redirect } from "react-router-dom";
 
 class Register extends Component {
@@ -55,23 +55,23 @@ class Register extends Component {
     const { current_user } = this.props;
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
-        <div>
-          <Form className="new-format">
+        <div className="border d-flex align-items-center justify-content-center">
+          <Form className="justify-content-center new-format text-center text-md-right w-25">
             <FormGroup>
               <Label for="name">Name</Label>
-              <Input
+              <Input  className="text-center"
                 name="name"
-                placeholder="Crytpo Name?"
+                placeholder="Enter you name"
                 type="text"
                 onChange={this.handleChange}
                 value={this.state.name}
               />
             </FormGroup>
             <FormGroup>
-              <Label for="picture">Image</Label>
-              <Input
+              <Label for="picture">Picture URL</Label>
+              <Input  className="text-center"
                 name="picture"
-                placeholder="How long is it being developed?"
+                placeholder="Add a Profile Picture"
                 type="url"
                 onChange={this.handleChange}
                 value={this.state.age}
@@ -79,72 +79,118 @@ class Register extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="branch_of_service">Service Branch</Label>
-              <Input
-                name="branch_of_service"
-                placeholder="Name the creator."
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.creator}
-              />
+              <Input type="select"  className="text-center"
+                     id="exampleCustomSelect"
+                     name="branch_of_service"
+                     placeholder="Service Branch"
+                     onChange={this.handleChange}
+                     value={this.state.branch_of_service}>
+                <option value="">Select</option>
+                <option>Air force </option>
+                <option>Army</option>
+                <option>Coast Guard</option>
+                <option>Marine Corps</option>
+                <option>Navy</option>
+                <option>Space Force</option>
+              </Input>
             </FormGroup>
             <FormGroup>
               <Label for="military_status">Military Status</Label>
-              <Input
-                name="military_status"
-                placeholder="Show me that coin."
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.image}
-              />
+              <Input type="select"  className="text-center"
+                     id="military_status" name="military_status"
+                     placeholder="Military Status"
+                     onChange={this.handleChange}
+                     value={this.state.military_status}>
+                <option value="">Select</option>
+                <option>Active Duty </option>
+                <option>National Guard</option>
+                <option>Reserves</option>
+                <option>Retired</option>
+                <option>Veteran</option>
+              </Input>
             </FormGroup>
+            <Row>
+            <Col md={6}>
             <FormGroup>
               <Label for="city">City</Label>
-              <Input
+              <Input  className="text-center"
                 name="city"
-                placeholder="Show me that coin."
+                placeholder="-"
                 type="text"
                 onChange={this.handleChange}
-                value={this.state.image}
+                value={this.state.city}
               />
             </FormGroup>
+            </Col>
+            <Col md={6}>
             <FormGroup>
               <Label for="state">State</Label>
-              <Input
+              <Input  className="text-center"
                 name="state"
-                placeholder="Show me that coin."
+                placeholder="-"
                 type="text"
                 onChange={this.handleChange}
                 value={this.state.image}
               />
             </FormGroup>
+            </Col>
+            </Row>
             <FormGroup>
-              <Label for="favorite_beer">favorite_beer</Label>
-              <Input
+              <Label for="favorite_beer">Beer of Choice</Label>
+              <Input className="text-center"
                 name="favorite_beer"
-                placeholder="Show me that coin."
+                placeholder="-"
                 type="text"
                 onChange={this.handleChange}
                 value={this.state.image}
               />
             </FormGroup>
             <FormGroup>
-              <Label for="duty_station">duty_station</Label>
-              <Input
+              <Label for="duty_station">Duty Station</Label>
+              <Input className="text-center"
                 name="duty_station"
-                placeholder="Show me that coin."
+                placeholder="-"
                 type="text"
                 onChange={this.handleChange}
-                value={this.state.image}
+                value={this.state.duty_station}
               />
             </FormGroup>
+              <Row>
+              <Col md={6}>
+              <FormGroup>
+                <Label for="exampleDate">
+                  Date
+                </Label>
+                <Input
+                    id="exampleDate"
+                    name="date"
+                    placeholder="date placeholder"
+                    type="date"
+                />
+              </FormGroup>
+              </Col>
+              <Col md={6}>
+              <FormGroup>
+                <Label for="exampleDate">
+                  Date
+                </Label>
+                <Input
+                    id="exampleDate"
+                    name="date"
+                    placeholder="date placeholder"
+                    type="date"
+                />
+              </FormGroup>
+              </Col>
+            </Row>
             <FormGroup>
-              <Label for="about_me">about_me</Label>
-              <Input
+              <Label for="about_me">About Me</Label>
+              <Input className="text-center"
                 name="about_me"
-                placeholder="Show me that coin."
-                type="text"
+                placeholder="Tell us about yourself"
+                type="textarea"
                 onChange={this.handleChange}
-                value={this.state.image}
+                value={this.state.about_me}
               />
             </FormGroup>
             <Button

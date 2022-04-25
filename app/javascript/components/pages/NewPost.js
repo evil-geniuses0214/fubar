@@ -1,12 +1,28 @@
 import React, { Component } from 'react'
+import {Button, Modal, ModalBody, ModalHeader} from "reactstrap";
 
 class NewPost extends Component {
-    state = {
-        title: '',
-        content: ''
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: '',
+            content: '',
+            modal: false
+
     }
 
-    handleChange = e => {
+
+    this.toggle = this.toggle.bind(this);
+}
+
+toggle() {
+    this.setState({
+        modal: !this.state.modal
+    });
+}
+
+
+handleChange = e => {
         let newValue = e.target.value;
         let key = e.target.name;
         this.setState({
@@ -32,23 +48,28 @@ class NewPost extends Component {
                 resp.json()
             })
             .then(post => {
-                this.props.history.push('/posts/view');
+                this.props.history.push('/posts');
             });
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
-                <p>
-                    <label htmlFor="title">Title: </label>
-                    <input type="text" name="title" onChange={this.handleChange} />
-                </p>
-                <p>
-                    <label htmlFor="content">Content: </label>
-                    <textarea name="content" id="" cols="30" rows="10" onChange={this.handleChange}></textarea>
-                </p>
-                <input type="submit" value="Create Post" />
-            </form>
+            <>
+                <Button color="danger" onClick={this.toggle}>Update Status</Button>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <form onSubmit={this.handleSubmit.bind(this)}>
+                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                    <ModalBody>
+                        <label htmlFor="title">Title: </label>
+                        <input type="text" name="title" onChange={this.handleChange} />
+                        <label htmlFor="content">Content: </label>
+                        <textarea name="content" id="" cols="30" rows="10" onChange={this.handleChange}></textarea>
+                        <Button color="primary" type="submit" onClick={this.toggle}>Create Post</Button>
+                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                    </ModalBody>
+                    </form>
+                </Modal>
+            </>
         )
     }
 }
