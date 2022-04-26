@@ -5,28 +5,44 @@ import { Card, CardBody, CardImg, CardTitle, Col, Row } from "reactstrap";
 export default class Index extends Component {
   render() {
     let { profiles } = this.props;
+    let { posts } = this.props;
     return (
       <div className="index-body">
-        <h1>Index</h1>
-        {profiles &&
-          profiles.map((profile) => {
-            return (
-              <Row className="index-padding" key={profile.id}>
-                <Col>
-                  <Card>
+        {profiles.map((profile) => {
+          return (
+            <Row className="index-padding" key={profile.id}>
+              <Card id="border-card">
+                <Card>
+                  <div id="row">
                     <NavLink to={`/show/${profile.id}`}>
-                      <CardImg alt="safe-house" src={profile.picture}></CardImg>
+                      <CardImg
+                        id="circle-image"
+                        alt="safe-house"
+                        src={profile.picture}
+                      ></CardImg>
                     </NavLink>
-                    <CardTitle tag="h5">{profile.name}</CardTitle>
-                    <CardBody>
-                      <p>{profile.branch_of_service}</p>
-                      <p>{profile.about_me}</p>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
-            );
-          })}
+                    <CardTitle id="column">
+                      <a id="name-style">{profile.name}</a>
+                    </CardTitle>
+                  </div>
+                </Card>
+                asdkjahsdkjah
+              </Card>
+            </Row>
+          );
+        })}
+        {/* {posts.map((post) => {
+          return (
+            <Row>
+              {console.log(post.title)}
+              <CardBody>
+                {console.log(post.name)}
+                <p>{post.title}</p>
+                <p>{post.content}</p>
+              </CardBody>
+            </Row>
+          );
+        })} */}
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import {Card, CardBody, CardText, Button, Row, Col} from "reactstrap";
-import MyStatus from './PostList'
+import { Card, CardBody, CardText, Button, Row } from "reactstrap";
+import MyStatus from "./PostList";
 import EditPost from "./NewPost";
 
 export default class MyProfile extends Component {
@@ -15,49 +15,70 @@ export default class MyProfile extends Component {
   render() {
     let { profile } = this.props;
     return (
-      <div className="show-body">
+      <div className="profile-margin">
         <Row>
-          <Col md={4}>
-        <Card>
-          <img alt="Card image cap" src={profile.picture} width="20%" />
-          <CardBody>
-            <CardText>{profile.name}</CardText>
-          </CardBody>
-          <CardBody>
-            <CardText>{profile.branch_of_service}</CardText>
-          </CardBody>
-          <CardBody>
-            <CardText>{profile.military_status}</CardText>
-          </CardBody>
-          <CardBody>
-            <CardText>{profile.city}</CardText>
-          </CardBody>
-          <CardBody>
-            <CardText>{profile.state}</CardText>
-          </CardBody>
-          <CardBody>
-            <CardText>{profile.favorite_beer}</CardText>
-          </CardBody>
-          <CardBody>
-            <CardText>{profile.duty_station}</CardText>
-          </CardBody>
-          <CardBody>
-            <CardText>{profile.about_me}</CardText>
-          </CardBody>
-          <CardBody>
-            <NavLink  to={`/profileedit/${profile.id}`}>
-              <Button onClick={this.handleSubmit}>Edit Profile</Button>
-            </NavLink>
-            <NavLink to="/index">
-              <Button onClick={this.handleDelete}>Delete Profile</Button>
-            </NavLink>
-          </CardBody>
-        </Card>
-        </Col>
-          <Col md={2}>
+          <Card>
+            <div id="row">
+              <img alt="Card image cap" src={profile.picture} width="20%" />
+              <CardBody id="column">
+                <CardText className="profile-name">{profile.name}</CardText>
+              </CardBody>
+            </div>
+          </Card>
+          <br />
+          <Card>
+            <CardBody>
+              <CardText>
+                <h5>Service Branch: </h5>
+                {profile.branch_of_service}
+              </CardText>
+            </CardBody>
+            <CardBody>
+              <CardText>
+                <h5>Military Status: </h5>
+                {profile.military_status}
+              </CardText>
+            </CardBody>
+            <CardBody>
+              <CardText>
+                <h5>Service Branch: </h5>
+                {profile.city}
+              </CardText>
+            </CardBody>
+            <CardBody>
+              <CardText>
+                <h5>Service Branch: </h5>
+                {profile.state}
+              </CardText>
+            </CardBody>
+            <CardBody>
+              <CardText>
+                <h5>Favorite Beer: </h5>
+                {profile.favorite_beer}
+              </CardText>
+            </CardBody>
+            <CardBody>
+              <CardText>
+                <h5>Duty Station: </h5>
+                {profile.duty_station}
+              </CardText>
+            </CardBody>
+            <CardBody>
+              <CardText>
+                <h5>About Me: </h5>
+                {profile.about_me}
+              </CardText>
+            </CardBody>
+            <CardBody>
+              <NavLink to="/index">
+                <Button onClick={this.handleDelete}>Delete Profile</Button>
+              </NavLink>
+            </CardBody>
+          </Card>
+          {/* <Col md={2}>
             <MyStatus />
             <EditPost />
-          </Col>
+          </Col> */}
         </Row>
       </div>
     );

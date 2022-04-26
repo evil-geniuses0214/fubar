@@ -19,6 +19,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       profiles: [],
+      posts: [],
     };
   }
 
@@ -32,6 +33,12 @@ export default class App extends React.Component {
       .then((load) => this.setState({ profiles: load }))
       .catch((errors) => console.log("Profile read errors:", errors));
   };
+  readPost = () => {
+    fetch("/api/v1/posts")
+      .then((response) => response.json())
+      .then((load) => this.setState({ posts: load }))
+      .catch((errors) => console.log("Posts read errors:", errors));
+  };
 
   createProfile = (newProfile) => {
     fetch("/profiles", {
@@ -44,6 +51,18 @@ export default class App extends React.Component {
       .then((response) => response.json())
       .then((payload) => this.readProfile())
       .catch((errors) => console.log("Profile create errors:", errors));
+  };
+  createPost = (newPost) => {
+    fetch("/api/v1/posts", {
+      body: JSON.stringify(newPost),
+      headers: {
+        "Content-type": "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => response.json())
+      .then((payload) => this.readPost())
+      .catch((errors) => console.log("Posts create errors:", errors));
   };
 
   updateProfile = (profile, id) => {
@@ -106,7 +125,12 @@ export default class App extends React.Component {
           {logged_in && (
             <Route
               path="/index"
-              render={(props) => <Index profiles={this.state.profiles} />}
+              render={(props) => (
+                <Index
+                  profiles={this.state.profiles}
+                  posts={this.state.posts}
+                />
+              )}
             />
           )}
 
@@ -134,6 +158,7 @@ export default class App extends React.Component {
             path="/profileedit/:id"
             render={(props) => {
               let id = props.match.params.id;
+              console.log(id);
               let profile = this.state.profiles.find(
                 (profile) => profile.user_id === +id
               );
@@ -164,7 +189,10 @@ export default class App extends React.Component {
           />
 
           {/* NEW POST */}
-          <Route path="/posts/new" component={NewPost} />
+          <Route
+            path="/newpost"
+            render={(props) => <NewPost createPost={this.createPost} />}
+          />
 
           {/* EDIT POST */}
           <Route path="/posts/view" component={PostList} />

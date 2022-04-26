@@ -1,77 +1,90 @@
-import React, { Component } from 'react'
-import {Button, Modal, ModalBody, ModalHeader} from "reactstrap";
+import React, { Component } from "react";
+import { Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 
 class NewPost extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: '',
-            content: '',
-            modal: false
-
-    }
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      content: "",
+      modal: false,
+    };
 
     this.toggle = this.toggle.bind(this);
-}
+  }
 
-toggle() {
+  toggle() {
     this.setState({
-        modal: !this.state.modal
+      modal: !this.state.modal,
     });
+  }
+
+  handleChange = (e) => {
+    let newValue = e.target.value;
+    let key = e.target.name;
+    this.setState({
+      [key]: newValue,
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let data = { post: this.state };
+    let token = document.querySelector('meta[name="csrf-token"]').content;
+    fetch("/api/v1/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+        "X-CSRF-Token": token,
+      },
+      redirect: "error",
+      body: JSON.stringify(this.state),
+    })
+      .then((resp) => {
+        resp.json();
+      })
+      .then((post) => {
+        this.props.history.push("/posts");
+      });
+  };
+
+  render() {
+    return (
+      <>
+        <Button color="danger" onClick={this.toggle}>
+          Update Status
+        </Button>
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}
+        >
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+            <ModalBody>
+              <label htmlFor="title">Title: </label>
+              <input type="text" name="title" onChange={this.handleChange} />
+              <label htmlFor="content">Content: </label>
+              <textarea
+                name="content"
+                id=""
+                cols="30"
+                rows="10"
+                onChange={this.handleChange}
+              ></textarea>
+              <Button color="primary" type="submit" onClick={this.toggle}>
+                Create Post
+              </Button>
+              <Button color="secondary" onClick={this.toggle}>
+                Cancel
+              </Button>
+            </ModalBody>
+          </form>
+        </Modal>
+      </>
+    );
+  }
 }
 
-
-handleChange = e => {
-        let newValue = e.target.value;
-        let key = e.target.name;
-        this.setState({
-            [key]: newValue
-        });
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        let data = {post: this.state};
-        let token = document.querySelector('meta[name="csrf-token"]').content;
-        fetch('/api/v1/posts', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRF-Token': token
-            },
-            redirect: "error",
-            body: JSON.stringify(this.state)
-        })
-            .then(resp => {
-                resp.json()
-            })
-            .then(post => {
-                this.props.history.push('/posts');
-            });
-    }
-
-    render() {
-        return (
-            <>
-                <Button color="danger" onClick={this.toggle}>Update Status</Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <form onSubmit={this.handleSubmit.bind(this)}>
-                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                    <ModalBody>
-                        <label htmlFor="title">Title: </label>
-                        <input type="text" name="title" onChange={this.handleChange} />
-                        <label htmlFor="content">Content: </label>
-                        <textarea name="content" id="" cols="30" rows="10" onChange={this.handleChange}></textarea>
-                        <Button color="primary" type="submit" onClick={this.toggle}>Create Post</Button>
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                    </ModalBody>
-                    </form>
-                </Modal>
-            </>
-        )
-    }
-}
-
-export default NewPost
+export default NewPost;

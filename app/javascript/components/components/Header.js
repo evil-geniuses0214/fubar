@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import homeIcon from "../assets/home-icon";
 import { NavLink } from "react-router-dom";
 import {
   Collapse,
@@ -25,18 +26,11 @@ export default class Header extends Component {
     return (
       <>
         <Navbar color="dark" dark expand="md" full>
-          <NavbarBrand href="/">Nav</NavbarBrand>
-          <NavbarToggler onClick={function noRefCheck() {}} />
           <Collapse navbar>
             <Nav>
               <NavItem>
                 <NavLink to="/" className="nav-link">
-                  Home
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/aboutus" className="nav-link">
-                  About us
+                  <img src={homeIcon} className="home-icon" />
                 </NavLink>
               </NavItem>
               {logged_in && (
