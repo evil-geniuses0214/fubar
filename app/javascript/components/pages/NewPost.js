@@ -19,6 +19,7 @@ class NewPost extends Component {
     });
   }
 
+
   handleChange = (e) => {
     let newValue = e.target.value;
     let key = e.target.name;
@@ -42,11 +43,11 @@ class NewPost extends Component {
       body: JSON.stringify(this.state),
     })
       .then((resp) => {
-        resp.json();
+        this.props.refetchData()
       })
-      .then((post) => {
-        this.props.history.push("/posts");
-      });
+      // .then((post) => {
+      //   this.props.history.push("/posts");
+      // });
   };
 
   render() {

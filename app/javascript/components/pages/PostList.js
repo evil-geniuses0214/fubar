@@ -2,22 +2,17 @@ import React, { Component } from "react";
 import { Button, Card, CardBody, CardText, CardTitle } from "reactstrap";
 
 class PostList extends Component {
+  constructor(props) {
+    super(props);
+  }
   state = {
-    posts: [],
+    posts: null,
   };
 
-  componentDidMount() {
-    fetch("/api/v1/posts")
-      .then((posts) => posts.json())
-      .then((posts) => {
-        this.setState({
-          posts: posts,
-        });
-      });
-  }
+
 
   renderPosts = () => {
-    return this.state.posts.map((post) => {
+    return this.props.posts?.map((post) => {
       return (
         <div key={post.id}>
           <Card>
