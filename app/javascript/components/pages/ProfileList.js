@@ -1,5 +1,5 @@
-import  React, { Component }               from 'react'
-import { Link }                           from 'react-router-dom'
+import  React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class ProfileList extends Component {
     state = {
@@ -15,7 +15,6 @@ class ProfileList extends Component {
                 })
             })
     }
-
 
     renderProfiles = () => {
         return this.state.profiles.map(profile => {
