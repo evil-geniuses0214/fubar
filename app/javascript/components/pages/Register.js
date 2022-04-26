@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import {CustomInput, Button, Form, FormGroup, Input, Label, Col, Row} from "reactstrap";
+import {
+  CustomInput,
+  Button,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Col,
+  Row,
+} from "reactstrap";
 import { Redirect } from "react-router-dom";
 
 class Register extends Component {
@@ -28,38 +37,19 @@ class Register extends Component {
   };
 
   handleSubmit = (e) => {
-    // e.preventDefault();
-    // let data = { post: this.state };
-    // let token = document.querySelector('meta[name="csrf-token"]').content;
-    // fetch("/profiles", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "X-Requested-With": "XMLHttpRequest",
-    //     "X-CSRF-Token": token,
-    //   },
-    //   redirect: "error",
-    //   body: JSON.stringify(this.state),
-    // })
-    //   .then((resp) => {
-    //     resp.json();
-    //   })
-    //   .then((post) => {
-    //     this.props.history.push("/index");
-    //   });
     this.props.createProfile(this.state.newProfile);
     this.setState({ submitted: true });
   };
 
   render() {
-    const { current_user } = this.props;
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <div className="border d-flex align-items-center justify-content-center">
           <Form className="justify-content-center new-format text-center text-md-right w-25">
             <FormGroup>
               <Label for="name">Name</Label>
-              <Input  className="text-center"
+              <Input
+                className="text-center"
                 name="name"
                 placeholder="Enter you name"
                 type="text"
@@ -69,7 +59,8 @@ class Register extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="picture">Picture URL</Label>
-              <Input  className="text-center"
+              <Input
+                className="text-center"
                 name="picture"
                 placeholder="Add a Profile Picture"
                 type="url"
@@ -79,12 +70,15 @@ class Register extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="branch_of_service">Service Branch</Label>
-              <Input type="select"  className="text-center"
-                     id="exampleCustomSelect"
-                     name="branch_of_service"
-                     placeholder="Service Branch"
-                     onChange={this.handleChange}
-                     value={this.state.branch_of_service}>
+              <Input
+                type="select"
+                className="text-center"
+                id="exampleCustomSelect"
+                name="branch_of_service"
+                placeholder="Service Branch"
+                onChange={this.handleChange}
+                value={this.state.branch_of_service}
+              >
                 <option value="">Select</option>
                 <option>Air force </option>
                 <option>Army</option>
@@ -96,11 +90,15 @@ class Register extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="military_status">Military Status</Label>
-              <Input type="select"  className="text-center"
-                     id="military_status" name="military_status"
-                     placeholder="Military Status"
-                     onChange={this.handleChange}
-                     value={this.state.military_status}>
+              <Input
+                type="select"
+                className="text-center"
+                id="military_status"
+                name="military_status"
+                placeholder="Military Status"
+                onChange={this.handleChange}
+                value={this.state.military_status}
+              >
                 <option value="">Select</option>
                 <option>Active Duty </option>
                 <option>National Guard</option>
@@ -110,34 +108,37 @@ class Register extends Component {
               </Input>
             </FormGroup>
             <Row>
-            <Col md={6}>
-            <FormGroup>
-              <Label for="city">City</Label>
-              <Input  className="text-center"
-                name="city"
-                placeholder="-"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.city}
-              />
-            </FormGroup>
-            </Col>
-            <Col md={6}>
-            <FormGroup>
-              <Label for="state">State</Label>
-              <Input  className="text-center"
-                name="state"
-                placeholder="-"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.image}
-              />
-            </FormGroup>
-            </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="city">City</Label>
+                  <Input
+                    className="text-center"
+                    name="city"
+                    placeholder="-"
+                    type="text"
+                    onChange={this.handleChange}
+                    value={this.state.city}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="state">State</Label>
+                  <Input
+                    className="text-center"
+                    name="state"
+                    placeholder="-"
+                    type="text"
+                    onChange={this.handleChange}
+                    value={this.state.image}
+                  />
+                </FormGroup>
+              </Col>
             </Row>
             <FormGroup>
               <Label for="favorite_beer">Beer of Choice</Label>
-              <Input className="text-center"
+              <Input
+                className="text-center"
                 name="favorite_beer"
                 placeholder="-"
                 type="text"
@@ -147,7 +148,8 @@ class Register extends Component {
             </FormGroup>
             <FormGroup>
               <Label for="duty_station">Duty Station</Label>
-              <Input className="text-center"
+              <Input
+                className="text-center"
                 name="duty_station"
                 placeholder="-"
                 type="text"
@@ -155,37 +157,34 @@ class Register extends Component {
                 value={this.state.duty_station}
               />
             </FormGroup>
-              <Row>
+            <Row>
               <Col md={6}>
-              <FormGroup>
-                <Label for="exampleDate">
-                  Date
-                </Label>
-                <Input
+                <FormGroup>
+                  <Label for="exampleDate">Date</Label>
+                  <Input
                     id="exampleDate"
                     name="date"
                     placeholder="date placeholder"
                     type="date"
-                />
-              </FormGroup>
+                  />
+                </FormGroup>
               </Col>
               <Col md={6}>
-              <FormGroup>
-                <Label for="exampleDate">
-                  Date
-                </Label>
-                <Input
+                <FormGroup>
+                  <Label for="exampleDate">Date</Label>
+                  <Input
                     id="exampleDate"
                     name="date"
                     placeholder="date placeholder"
                     type="date"
-                />
-              </FormGroup>
+                  />
+                </FormGroup>
               </Col>
             </Row>
             <FormGroup>
               <Label for="about_me">About Me</Label>
-              <Input className="text-center"
+              <Input
+                className="text-center"
                 name="about_me"
                 placeholder="Tell us about yourself"
                 type="textarea"
