@@ -44,42 +44,45 @@ class Register extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
-        <div className="border d-flex align-items-center justify-content-center">
-          <Form className="justify-content-center new-format text-center text-md-right w-25">
+        <div className="d-flex align-items-center justify-content-center form-holder">
+          <Form className="justify-content-center new-format text-center text-md-right">
+            <div>
+              <h1 className="register-heading">Profile Information</h1>
+              <h2 className="register-text">
+                Fill out the form carefully for registration
+              </h2>
+            </div>
             <FormGroup>
-              <Label for="name">Name</Label>
               <Input
-                className="text-center"
+                className="form-input"
                 name="name"
-                placeholder="Enter you name"
+                placeholder="Your Name"
                 type="text"
                 onChange={this.handleChange}
                 value={this.state.name}
               />
             </FormGroup>
             <FormGroup>
-              <Label for="picture">Picture URL</Label>
               <Input
-                className="text-center"
+                className="form-input"
                 name="picture"
-                placeholder="Add a Profile Picture"
+                placeholder="Add a Profile Picture URL"
                 type="url"
                 onChange={this.handleChange}
                 value={this.state.age}
               />
             </FormGroup>
             <FormGroup>
-              <Label for="branch_of_service">Service Branch</Label>
               <Input
                 type="select"
-                className="text-center"
+                className="form-input"
                 id="exampleCustomSelect"
                 name="branch_of_service"
                 placeholder="Service Branch"
                 onChange={this.handleChange}
                 value={this.state.branch_of_service}
               >
-                <option value="">Select</option>
+                <option value="">Service Branch</option>
                 <option>Air force </option>
                 <option>Army</option>
                 <option>Coast Guard</option>
@@ -89,17 +92,16 @@ class Register extends Component {
               </Input>
             </FormGroup>
             <FormGroup>
-              <Label for="military_status">Military Status</Label>
               <Input
                 type="select"
-                className="text-center"
+                className="form-input"
                 id="military_status"
                 name="military_status"
                 placeholder="Military Status"
                 onChange={this.handleChange}
                 value={this.state.military_status}
               >
-                <option value="">Select</option>
+                <option value="">Military Status</option>
                 <option>Active Duty </option>
                 <option>National Guard</option>
                 <option>Reserves</option>
@@ -110,11 +112,10 @@ class Register extends Component {
             <Row>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="city">City</Label>
                   <Input
-                    className="text-center"
+                    className="form-input"
                     name="city"
-                    placeholder="-"
+                    placeholder="City"
                     type="text"
                     onChange={this.handleChange}
                     value={this.state.city}
@@ -123,11 +124,10 @@ class Register extends Component {
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="state">State</Label>
                   <Input
-                    className="text-center"
+                    className="form-input"
                     name="state"
-                    placeholder="-"
+                    placeholder="State"
                     type="text"
                     onChange={this.handleChange}
                     value={this.state.image}
@@ -136,22 +136,20 @@ class Register extends Component {
               </Col>
             </Row>
             <FormGroup>
-              <Label for="favorite_beer">Beer of Choice</Label>
               <Input
-                className="text-center"
+                className="form-input"
                 name="favorite_beer"
-                placeholder="-"
+                placeholder="Favorite Beer"
                 type="text"
                 onChange={this.handleChange}
                 value={this.state.image}
               />
             </FormGroup>
             <FormGroup>
-              <Label for="duty_station">Duty Station</Label>
               <Input
-                className="text-center"
+                className="form-input"
                 name="duty_station"
-                placeholder="-"
+                placeholder="Duty Station"
                 type="text"
                 onChange={this.handleChange}
                 value={this.state.duty_station}
@@ -160,31 +158,31 @@ class Register extends Component {
             <Row>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="exampleDate">Date</Label>
+                  <Label>Service Start Date</Label>
                   <Input
+                    className="form-input"
                     id="exampleDate"
                     name="date"
-                    placeholder="date placeholder"
+                    placeholder="Began Service Date"
                     type="date"
                   />
                 </FormGroup>
               </Col>
               <Col md={6}>
+                <Label>End Date</Label>
                 <FormGroup>
-                  <Label for="exampleDate">Date</Label>
                   <Input
                     id="exampleDate"
                     name="date"
-                    placeholder="date placeholder"
+                    placeholder="Service End Date"
                     type="date"
                   />
                 </FormGroup>
               </Col>
             </Row>
             <FormGroup>
-              <Label for="about_me">About Me</Label>
               <Input
-                className="text-center"
+                className="form-input text-area"
                 name="about_me"
                 placeholder="Tell us about yourself"
                 type="textarea"
@@ -193,11 +191,12 @@ class Register extends Component {
               />
             </FormGroup>
             <Button
-              style={{ backgroundColor: "#39535c" }}
+              style={{ backgroundColor: "#000" }}
               name="submit"
               onClick={this.handleSubmit}
+              className="submit-btn"
             >
-              submit
+              SUBMIT
             </Button>
             {this.state.submitted && <Redirect to="/index" />}
           </Form>
