@@ -1,25 +1,49 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Card, CardBody, CardText, Button, Row } from "reactstrap";
-import MyStatus from "./PostList";
-import EditPost from "./NewPost";
+import {Card, CardBody, CardText, Button, Row, Col} from "reactstrap";
+import PostList from "./PostList";
+import NewPost from "./NewPost";
 
 export default class MyProfile extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      posts: null,
+    };
   }
   handleDelete = () => {
     this.props.deleteProfile(this.props.profile.id);
   };
 
+  refetchData = async () => {
+    const response = await fetch("/api/v1/posts")
+    const data = await response.json()
+    this.setState({
+      posts: data,
+    });
+  }
+
+  componentDidMount() {
+    if (!this.state.posts) {
+      fetch("/api/v1/posts")
+          .then((posts) => posts.json())
+          .then((posts) => {
+            this.setState({
+              posts: posts,
+            });
+          });
+    }
+  }
+
   render() {
+    console.log(this.state)
     let { profile } = this.props;
     return (
       <div className="profile-margin">
         <Row>
           <Card>
             <div id="row">
-              <img alt="Card image cap" src={profile.picture} width="20%" />
+              <img alt="Card image cap" src={profile?.picture} width="20%" />
               <CardBody id="column">
                 <CardText className="profile-name">{profile.name}</CardText>
               </CardBody>
@@ -75,10 +99,10 @@ export default class MyProfile extends Component {
               </NavLink>
             </CardBody>
           </Card>
-          {/* <Col md={2}>
-            <MyStatus />
-            <EditPost />
-          </Col> */}
+          <Col md={2}>
+            <PostList posts = {this.state.posts} />
+            <NewPost refetchData = {this.refetchData} />
+          </Col>
         </Row>
       </div>
     );
