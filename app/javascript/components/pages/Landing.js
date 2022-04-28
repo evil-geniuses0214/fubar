@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import landingBackground from "../assets/landing-bg";
+import landingBackground from "../assets/landing-bg.jpg";
 
 export default class Header extends Component {
     render() {
