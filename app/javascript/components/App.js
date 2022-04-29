@@ -12,6 +12,7 @@ import Show from "./pages/Show";
 import PostList from "./pages/PostList";
 import NewPost from "./pages/NewPost";
 import Register from "./pages/Register";
+import MarketPlace from "./pages/MarketPlace";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 export default class App extends React.Component {
@@ -92,20 +93,7 @@ export default class App extends React.Component {
       .then((payload) => this.readProfile())
       .catch((errors) => console.log("Profile error:", errors));
   };
-  deleteProfile = (id) => {
-    let token = document.querySelector('meta[name="csrf-token"]').content;
-    fetch(`/profiles/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-        "X-CSRF-Token": token,
-      },
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then((payload) => this.readProfile())
-      .catch((errors) => console.log("Profile error:", errors));
-  };
+
 
   render() {
     const { logged_in } = this.props;
@@ -196,6 +184,9 @@ export default class App extends React.Component {
 
           {/* EDIT POST */}
           <Route path="/posts/view" component={PostList} />
+
+          {/* MARKETPLACE */}
+          <Route path="/marketplace" component={MarketPlace} />
 
           {/* NOT FOUND */}
           <Route component={NotFound} />
