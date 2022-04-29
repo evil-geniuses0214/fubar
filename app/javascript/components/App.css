@@ -275,3 +275,46 @@ footer {
     font-size: 16px;
     color: #fff;
 }
+
+.marketplace {
+    background: url("./assets/landing-bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.card-img-top {
+    /*height: 15vw;*/
+    width: 100%;
+    object-fit: fill;
+    display: block;
+    height: 15rem; /* layout hack */
+    background:  center center no-repeat;
+    border-radius: 10px;
+    padding: 0;
+
+
+}
+
+.weapon-div {
+    text-decoration: none;
+    text-shadow:black ;
+    overflow: hidden;
+    color: whitesmoke;
+    transition: transform .5s;
+    background: rgba( 255, 255, 255, 0.35 );
+    box-shadow: 1px 1px 3px grey;
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 15px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+}
+
+.weapon-div:hover {
+    box-shadow: 1px 8px 20px grey;
+    transform: scale3d(1.006, 1.006, 1);
+}
+
+

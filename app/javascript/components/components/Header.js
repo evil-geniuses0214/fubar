@@ -3,7 +3,6 @@ import homeIcon from "../assets/home-icon.jpg";
 import "../assets/target.png";
 import { NavLink } from "react-router-dom";
 
-
 import {
   Collapse,
   DropdownItem,
@@ -96,11 +95,18 @@ export default class Header extends Component {
               )}
               {logged_in && (
                 <NavItem>
-                  <a href={sign_out_route} className="nav-link header-nav" >
-                    Logout
-                  </a>
+                  <NavLink to="/marketplace" className="nav-link">
+                    *MARKETPLACE*
+                  </NavLink>
                 </NavItem>
               )}
+                {logged_in && (
+                    <NavItem>
+                      <a href={sign_out_route} className="nav-link header-nav" >
+                        Logout
+                      </a>
+                    </NavItem>
+                )}
               {!logged_in && (
                 <NavItem>
                   <a href={sign_in_route} className="nav-link header-nav">
