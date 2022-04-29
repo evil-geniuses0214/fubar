@@ -124,7 +124,9 @@ export default class Edit extends Component {
             onClick={this.handleSubmit}
           >
             Edit
-            {this.state.submitted && <Redirect to={`/profile/${profile.id}`} />}
+            {this.state.submitted && (
+              <Redirect to={`/profile/${profile.user_id}`} />
+            )}
           </Button>
           <NavLink to={`/profile/${profile.id}`}>
             <Button style={{ backgroundColor: "#39535c" }}>Cancel</Button>

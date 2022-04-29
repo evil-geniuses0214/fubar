@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import {Card, CardBody, CardText, Button, Row, Col} from "reactstrap";
+import { Card, CardBody, CardText, Button, Row, Col } from "reactstrap";
 import PostList from "./PostList";
 import NewPost from "./NewPost";
 
@@ -16,27 +16,27 @@ export default class MyProfile extends Component {
   };
 
   refetchData = async () => {
-    const response = await fetch("/api/v1/posts")
-    const data = await response.json()
+    const response = await fetch("/api/v1/posts");
+    const data = await response.json();
     this.setState({
       posts: data,
     });
-  }
+  };
 
   componentDidMount() {
     if (!this.state.posts) {
       fetch("/api/v1/posts")
-          .then((posts) => posts.json())
-          .then((posts) => {
-            this.setState({
-              posts: posts,
-            });
+        .then((posts) => posts.json())
+        .then((posts) => {
+          this.setState({
+            posts: posts,
           });
+        });
     }
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     let { profile } = this.props;
     return (
       <div className="profile-margin">
@@ -100,8 +100,8 @@ export default class MyProfile extends Component {
             </CardBody>
           </Card>
           <Col md={2}>
-            <PostList posts = {this.state.posts} />
-            <NewPost refetchData = {this.refetchData} />
+            <PostList posts={this.state.posts} />
+            <NewPost refetchData={this.refetchData} />
           </Col>
         </Row>
       </div>

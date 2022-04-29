@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import githubLogo from "../assets/githubLogo";
+import githubLogo from "../assets/githubLogo.png";
 import { Nav, NavItem, NavLink } from "reactstrap";
 
 export default class Footer extends Component {
@@ -15,7 +15,10 @@ export default class Footer extends Component {
             </NavItem>
 
             <NavItem>
-              <NavLink href="" target="_blank">
+              <NavLink
+                href="https://github.com/evil-geniuses0214/fubar"
+                target="_blank"
+              >
                 Docs
               </NavLink>
             </NavItem>

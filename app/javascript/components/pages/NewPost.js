@@ -19,7 +19,6 @@ class NewPost extends Component {
     });
   }
 
-
   handleChange = (e) => {
     let newValue = e.target.value;
     let key = e.target.name;
@@ -41,13 +40,9 @@ class NewPost extends Component {
       },
       redirect: "error",
       body: JSON.stringify(this.state),
-    })
-      .then((resp) => {
-        this.props.refetchData()
-      })
-      // .then((post) => {
-      //   this.props.history.push("/posts");
-      // });
+    }).then((resp) => {
+      this.props.refetchData();
+    });
   };
 
   render() {
