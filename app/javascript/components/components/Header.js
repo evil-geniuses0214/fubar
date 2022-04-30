@@ -96,7 +96,7 @@ export default class Header extends Component {
               {logged_in && (
                 <NavItem>
                   <NavLink to="/marketplace" className="nav-link">
-                    *MARKETPLACE*
+                    Marketplace
                   </NavLink>
                 </NavItem>
               )}
