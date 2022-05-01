@@ -29,8 +29,6 @@
     padding: 0;
 }
 
-/* EDIT */
-
 /* HEADER */
 .home-icon {
     width: 120px;
@@ -70,9 +68,9 @@ footer {
 /* MY PROFILE */
 .profile-margin {
     margin: auto;
-    padding-top: 10px;
+    padding-top: 50px;
     padding-bottom: 10%;
-    width: 35%;
+    width: 80%;
 }
 
 .profile-name {

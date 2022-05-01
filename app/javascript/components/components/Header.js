@@ -41,94 +41,94 @@ export default class Header extends Component {
       sign_out_route,
     } = this.props;
     return (
-      <>
-        <Navbar expand="md" full className="header-main">
-          <NavbarBrand href="/" className="mr-auto"></NavbarBrand>
-          <NavbarToggler className="toggle" onClick={this.toggleNavbar} />
-          <Collapse isOpen={!this.state.collapsed} navbar>
-            <Nav navbar className="nav-holder">
-              <NavItem>
-                <NavLink to="/" className="nav-link header-nav">
-                  <img src={homeIcon} className="home-icon" />
-                </NavLink>
-              </NavItem>
-              <span className="navbar-options">
+        <>
+          <Navbar expand="md" full className="header-main">
+            <NavbarBrand href="/" className="mr-auto"></NavbarBrand>
+            <NavbarToggler className="toggle" onClick={this.toggleNavbar} />
+            <Collapse isOpen={!this.state.collapsed} navbar>
+              <Nav navbar className="nav-holder">
+                <NavItem>
+                  <NavLink to="/" className="nav-link header-nav">
+                    <img src={homeIcon} className="home-icon" />
+                  </NavLink>
+                </NavItem>
+                <span className="navbar-options">
               <NavLink to="/" className="nav-link header-nav">
                 Home
               </NavLink>
-              {logged_in && (
-                <UncontrolledDropdown inNavbar nav>
-                  <DropdownToggle caret nav>
-                    Profile
-                  </DropdownToggle>
-                  <DropdownMenu end>
-                    <DropdownItem>
+                  {logged_in && (
+                      <UncontrolledDropdown inNavbar nav>
+                        <DropdownToggle caret nav>
+                          Profile
+                        </DropdownToggle>
+                        <DropdownMenu end>
+                          <DropdownItem>
+                            <NavItem>
+                              <NavLink
+                                  to={`/profile/${current_user.id}`}
+                                  className="nav-link"
+                              >
+                                My Profile
+                              </NavLink>
+                            </NavItem>
+                          </DropdownItem>
+                          <DropdownItem>
+                            <NavItem>
+                              <NavLink
+                                  to={`/profileedit/${current_user.id}`}
+                                  className="nav-link"
+                              >
+                                Edit Profile
+                              </NavLink>
+                            </NavItem>
+                          </DropdownItem>
+                          <DropdownItem divider />
+                          <DropdownItem>
+                            <NavItem>
+                              <NavLink to="/index" className="nav-link">
+                                View All Profiles
+                              </NavLink>
+                            </NavItem>
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </UncontrolledDropdown>
+                  )}
+                  {logged_in && (
                       <NavItem>
-                        <NavLink
-                          to={`/profile/${current_user.id}`}
-                          className="nav-link"
-                        >
-                          My Profile
+                        <NavLink to="/marketplace" className="nav-link">
+                          Marketplace
                         </NavLink>
                       </NavItem>
-                    </DropdownItem>
-                    <DropdownItem>
+                  )}
+                  {logged_in && (
                       <NavItem>
-                        <NavLink
-                          to={`/profileedit/${current_user.id}`}
-                          className="nav-link"
-                        >
-                          Edit Profile
-                        </NavLink>
+                        <a href={sign_out_route} className="nav-link header-nav" >
+                          Logout
+                        </a>
                       </NavItem>
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>
+                  )}
+                  {!logged_in && (
                       <NavItem>
-                        <NavLink to="/index" className="nav-link">
-                          View All Profiles
-                        </NavLink>
+                        <a href={sign_in_route} className="nav-link header-nav">
+                          Login
+                        </a>
                       </NavItem>
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              )}
-              {logged_in && (
-                <NavItem>
-                  <NavLink to="/marketplace" className="nav-link">
-                    *MARKETPLACE*
-                  </NavLink>
-                </NavItem>
-              )}
-                {logged_in && (
-                    <NavItem>
-                      <a href={sign_out_route} className="nav-link header-nav" >
-                        Logout
-                      </a>
-                    </NavItem>
-                )}
-              {!logged_in && (
-                <NavItem>
-                  <a href={sign_in_route} className="nav-link header-nav">
-                    Login
-                  </a>
-                </NavItem>
-              )}
-              {!logged_in && (
-                <NavItem>
-                  <a href={new_user_route} className="nav-link header-nav">
-                    Sign Up!
-                  </a>
-                </NavItem>
-              )}
-                <NavLink to="/" className="nav-link header-nav">
-                <i class="fa fa-user account" aria-hidden="true"></i>
+                  )}
+                  {!logged_in && (
+                      <NavItem>
+                        <a href={new_user_route} className="nav-link header-nav">
+                          Sign Up!
+                        </a>
+                      </NavItem>
+                  )}
+                  <NavLink to="/" className="nav-link header-nav">
+                <i className="fa fa-user account" aria-hidden="true"></i>
               </NavLink>
               </span>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </>
     );
   }
 }
