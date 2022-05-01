@@ -1,6 +1,6 @@
 <div class="holder">
   <div class="forget-password-holder">
-    <div>Forgot your password?>
+    <div class="forget-password">
       <h2 class="forget-heading">Forgot your password?</h2>
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
