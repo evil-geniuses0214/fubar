@@ -113,6 +113,16 @@ export default class Header extends Component {
                           Login
                         </a>
                       </NavItem>
+                  )}
+                  {!logged_in && (
+                      <NavItem>
+                        <a href={new_user_route} className="nav-link header-nav">
+                          Sign Up!
+                        </a>
+                      </NavItem>
+                  )}
+                  <NavLink to="/" className="nav-link header-nav">
+                <i className="fa fa-user account" aria-hidden="true"></i>
               </NavLink>
               </span>
               </Nav>
