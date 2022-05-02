@@ -81,6 +81,7 @@ class Register extends Component {
                     placeholder="Service Branch"
                     onChange={this.handleChange}
                     value={this.state.branch_of_service}
+                    style={{color: "grey"}}
                 >
                   <option value="">Service Branch</option>
                   <option>Air force </option>
@@ -100,8 +101,9 @@ class Register extends Component {
                     placeholder="Military Status"
                     onChange={this.handleChange}
                     value={this.state.military_status}
+                    style={{color: "grey"}}
                 >
-                  <option value="">Military Status</option>
+                  <option value="" >Military Status</option>
                   <option>Active Duty </option>
                   <option>National Guard</option>
                   <option>Reserves</option>
@@ -158,7 +160,7 @@ class Register extends Component {
               <Row>
                 <Col md={6}>
                   <FormGroup>
-                    <Label>Service Start Date</Label>
+                    <Label style={{ color: "#DADADAFF" }}>Service Start Date</Label>
                     <Input
                         className="form-input"
                         id="exampleDate"
@@ -169,7 +171,7 @@ class Register extends Component {
                   </FormGroup>
                 </Col>
                 <Col md={6}>
-                  <Label>End Date</Label>
+                  <Label style={{ color: "#DADADAFF" }}>End Date</Label>
                   <FormGroup>
                     <Input
                         id="exampleDate"
@@ -177,6 +179,7 @@ class Register extends Component {
                         placeholder="Service End Date"
                         type="date"
                         className="form-input"
+                        style={{color: "grey"}}
                     />
                   </FormGroup>
                 </Col>

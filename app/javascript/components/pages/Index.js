@@ -7,27 +7,25 @@ export default class Index extends Component {
     let { profiles } = this.props;
     let { posts } = this.props;
     return (
-      <div className="index-body">
+        <div className="index-page">
+          <div className="index-body">
         {profiles.map((profile) => {
           return (
-            <Row className="index-padding" key={profile.id}>
-              <Card id="border-card">
-                <Card>
-                  <div id="row">
-                    <NavLink to={`/show/${profile.id}`}>
-                      <CardImg
-                        id="circle-image"
-                        alt="safe-house"
-                        src={profile.picture}
-                      ></CardImg>
-                    </NavLink>
-                    <CardTitle id="column">
-                      <a id="name-style">{profile.name}</a>
-                    </CardTitle>
-                  </div>
+              <Row className="index-padding" key={profile.id}>
+                <img className="bg-profile-index" src={profile.picture}></img>
+                <Card id="border-card">
+                  <Card>
+                    <div id="row" className="index-profile">
+                      <NavLink className="profile" to={`/show/${profile.id}`}>
+                        <CardImg id="circle-image" alt="safe-house" src={profile.picture}></CardImg>
+                      </NavLink>
+                      <CardTitle id="column">
+                        <a id="name-style">{profile.name}</a>
+                      </CardTitle>
+                    </div>
+                  </Card>
+                  <span>Web Developer</span>
                 </Card>
-                asdkjahsdkjah
-              </Card>
             </Row>
           );
         })}
@@ -44,6 +42,7 @@ export default class Index extends Component {
           );
         })} */}
       </div>
+        </div>
     );
   }
 }
