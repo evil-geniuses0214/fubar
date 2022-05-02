@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import githubLogo from "../assets/githubLogo";
+import githubLogo from "../assets/githubLogo.png";
 import { Nav, NavItem, NavLink } from "reactstrap";
 
 export default class Footer extends Component {
