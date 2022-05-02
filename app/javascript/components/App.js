@@ -14,7 +14,7 @@ import NewPost from "./pages/NewPost";
 import Register from "./pages/Register";
 import MarketPlace from "./pages/MarketPlace";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LandingLoggedIn from "./pages/LandingLoggedIn";
+
 
 export default class App extends React.Component {
   constructor(props) {
