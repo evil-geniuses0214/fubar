@@ -141,6 +141,7 @@ export default class App extends Component {
           )}
 
           {/* EDIT PROFILE */}
+          {logged_in && (
           <Route
             path="/profileedit/:id"
             render={(props) => {
@@ -154,8 +155,10 @@ export default class App extends Component {
               );
             }}
           />
+          )}
 
           {/* SHOW PROFILE */}
+          {logged_in && (
           <Route
             path="/show/:id"
             render={(props) => {
@@ -168,24 +171,33 @@ export default class App extends Component {
               );
             }}
           />
+          )}
 
           {/* REGISTER */}
+          {logged_in && (
           <Route
             path="/create-profile"
             render={(props) => <Register createProfile={this.createProfile} />}
           />
+          )}
 
           {/* NEW POST */}
+          {logged_in && (
           <Route
             path="/newpost"
             render={(props) => <NewPost createPost={this.createPost} />}
           />
+          )}
 
           {/* EDIT POST */}
+          {logged_in && (
           <Route path="/posts/view" component={PostList} />
+          )}
 
           {/* MARKETPLACE */}
+          {logged_in && (
           <Route path="/marketplace" component={MarketPlace} />
+          )}
 
           {/* NOT FOUND */}
           <Route component={NotFound} />
