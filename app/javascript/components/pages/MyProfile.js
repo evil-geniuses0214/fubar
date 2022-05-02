@@ -37,7 +37,6 @@ export default class MyProfile extends Component {
   }
 
   render() {
-    console.log(this.state);
     let { profile } = this.props;
     return (
         <div className="profile-content">
