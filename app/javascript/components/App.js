@@ -14,6 +14,7 @@ import NewPost from "./pages/NewPost";
 import Register from "./pages/Register";
 import MarketPlace from "./pages/MarketPlace";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LandingLoggedIn from "./pages/LandingLoggedIn";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -103,8 +104,10 @@ export default class App extends React.Component {
         <Header {...this.props} />
         <Switch>
           {/* HOME */}
+
           <Route exact path="/" component={Landing} />
           <Route exact path="/home" component={Landing} />
+
 
           {/* ABOUT US */}
           <Route path="/aboutus" component={About} />

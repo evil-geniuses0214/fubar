@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Label, Input, FormGroup, Button } from "reactstrap";
+import {Form, Label, Input, FormGroup, Button, Row, Col} from "reactstrap";
 import { Redirect, NavLink } from "react-router-dom";
 
 export default class Edit extends Component {
@@ -35,102 +35,173 @@ export default class Edit extends Component {
   render() {
     let { profile } = this.props;
     return (
-      <div>
+      <>
+        <form className="edit-form">
+        <div className="d-flex align-items-center justify-content-center form-holder">
+          <Form className="justify-content-center new-format text-center text-md-right">
+            <div>
+              <h1 className="register-heading">Edit Profile Information</h1>
+              <h2 className="register-text">
+                Click submit to make changes
+              </h2>
+            </div>
         <Form className="new-format">
           <FormGroup>
-            <Label for="name">Name</Label>
             <Input
-              name="name"
-              type="text"
-              onChange={this.handleChange}
-              value={profile.name}
+                className="form-input"
+                name="name"
+                placeholder={profile.name}
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.name}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="picture">Image</Label>
             <Input
-              name="picture"
-              type="url"
-              onChange={this.handleChange}
-              value={profile.picture}
+                className="form-input"
+                name="picture"
+                placeholder={profile.picture}
+                type="url"
+                onChange={this.handleChange}
+                value={this.state.age}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="branch_of_service">Service Branch</Label>
             <Input
-              name="branch_of_service"
-              type="text"
-              onChange={this.handleChange}
-              value={profile.branch_of_service}
+                type="select"
+                className="form-input"
+                id="exampleCustomSelect"
+                name="branch_of_service"
+                placeholder={profile.branch_of_service}
+                onChange={this.handleChange}
+                value={this.state.branch_of_service}
+                style={{color: "grey"}}
+            >
+              <option value="" disabled selected hidden>{profile.branch_of_service}</option>
+              <option>Air force </option>
+              <option>Army</option>
+              <option>Coast Guard</option>
+              <option>Marine Corps</option>
+              <option>Navy</option>
+              <option>Space Force</option>
+            </Input>
+          </FormGroup>
+          <FormGroup>
+            <Input
+                type="select"
+                className="form-input"
+                id="military_status"
+                name="military_status"
+                placeholder={profile.military_status}
+                onChange={this.handleChange}
+                value={this.state.military_status}
+                style={{color: "grey"}}
+            >
+              <option value="" disabled selected hidden>{profile.military_status}</option>
+              <option>Active Duty </option>
+              <option>National Guard</option>
+              <option>Reserves</option>
+              <option>Retired</option>
+              <option>Veteran</option>
+            </Input>
+          </FormGroup>
+          <Row>
+            <Col md={6}>
+              <FormGroup>
+                <Input
+                    className="form-input"
+                    name="city"
+                    placeholder={profile.city}
+                    type="text"
+                    onChange={this.handleChange}
+                    value={this.state.city}
+                />
+              </FormGroup>
+            </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Input
+                    className="form-input"
+                    name="state"
+                    placeholder={profile.state}
+                    type="text"
+                    onChange={this.handleChange}
+                    value={this.state.image}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
+          <FormGroup>
+            <Input
+                className="form-input"
+                name="favorite_beer"
+                placeholder={profile.favorite_beer}
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.image}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="military_status">Military Status</Label>
             <Input
-              name="military_status"
-              type="text"
-              onChange={this.handleChange}
-              value={profile.military_status}
+                className="form-input"
+                name="duty_station"
+                placeholder={profile.duty_station}
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.duty_station}
             />
           </FormGroup>
+          <Row>
+            <Col md={6}>
+              <FormGroup>
+                <Input
+                    className="form-input"
+                    id="exampleDate"
+                    name="date"
+                    placeholder="Began Service Date"
+                    type="date"
+                    style={{color: "grey"}}
+                />
+              </FormGroup>
+            </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Input
+                    id="exampleDate"
+                    name="date"
+                    placeholder="Service End Date"
+                    type="date"
+                    className="form-input"
+                    style={{color: "grey"}}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
           <FormGroup>
-            <Label for="city">City</Label>
             <Input
-              name="city"
-              type="text"
-              onChange={this.handleChange}
-              value={profile.city}
+                className="form-input text-area"
+                name="about_me"
+                placeholder={profile.about_me}
+                type="textarea"
+                onChange={this.handleChange}
+                value={this.state.about_me}
             />
           </FormGroup>
-          <FormGroup>
-            <Label for="state">State</Label>
-            <Input
-              name="state"
-              type="text"
-              onChange={this.handleChange}
-              value={profile.state}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="favorite_beer">favorite_beer</Label>
-            <Input
-              name="favorite_beer"
-              type="text"
-              onChange={this.handleChange}
-              value={profile.favorite_beer}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="duty_station">duty_station</Label>
-            <Input
-              name="duty_station"
-              type="text"
-              onChange={this.handleChange}
-              value={profile.duty_station}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="about_me">about_me</Label>
-            <Input
-              name="about_me"
-              type="text"
-              onChange={this.handleChange}
-              value={profile.about_me}
-            />
-          </FormGroup>
-          <Button
-            style={{ backgroundColor: "#39535c" }}
-            name="submit"
-            onClick={this.handleSubmit}
+          <Button name="submit"
+          style={{ backgroundColor: "#000" }}
+          onClick={this.handleSubmit}
           >
             Edit
             {this.state.submitted && <Redirect to={`/profile/${profile.id}`} />}
           </Button>
           <NavLink to={`/profile/${profile.id}`}>
-            <Button style={{ backgroundColor: "#39535c" }}>Cancel</Button>
+            <Button style={{ backgroundColor: "#000" }}>Cancel</Button>
           </NavLink>
         </Form>
-      </div>
+          </Form>
+        </div>
+        </form>
+      </>
     );
   }
 }
