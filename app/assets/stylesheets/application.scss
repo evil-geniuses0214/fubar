@@ -15,6 +15,12 @@
  */
 @import 'bootstrap';
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900);
+//* {
+//  font-family: Roboto, sans-serif;
+//}
+
+
+
 
 .login-holder, .holder {
   padding: 100px 0;
@@ -29,7 +35,7 @@
     width: 100%;
     margin: 0 auto;
     .sign-in {
-      font-family: 'Roboto';
+      font-family: 'Roboto', sans-serif;
       font-weight: bold;
       color: #000;
       text-transform: capitalize;
@@ -55,7 +61,7 @@
       align-items: center;
     }
     .forget-label {
-      font-family: 'Roboto';
+      font-family: 'Roboto', sans serif;
       font-size: 13px;
       margin-left: 5px;
     }
@@ -78,7 +84,7 @@
       }
     }
     .forget-password {
-      font-family: 'Roboto';
+      font-family: 'Roboto', sans-serif;
       color: #333;
       font-size: 14px;
       text-decoration: none;
@@ -384,6 +390,7 @@
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #151728;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .profile-bg {
   position: relative;
@@ -401,12 +408,11 @@
     bottom: 16px;
     left: 24px;
     .profile-name {
-      font-family: 'Roboto';
-      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
       color: #fff;
       text-transform: capitalize;
-      font-size: 30px;
-      letter-spacing: 1px;
+      font-size: 50px;
+      letter-spacing: 2px;
     }
   }
 }
@@ -429,6 +435,9 @@
 #about_me {
   background: rgba( 255, 255, 255, 0.12 );
   box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+  0px 8px 13px rgba(0,0,0,0.1),
+  0px 18px 23px rgba(0,0,0,0.1);
   backdrop-filter: blur( 4px );
   border: 1px solid rgba( 0, 0, 0, 0.18 );
   border-radius: 14px;
@@ -441,8 +450,11 @@
   #column {
     font-size: unset;
   }
-  h1 {
+  h1,h1,h3,h4,h5 {
     color: #fff;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 2px;
   }
 }
 #services_holder, #update_status {
@@ -454,11 +466,21 @@
   width: 27%;
   margin: 0 0 20px;
   padding: 20px;
+  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+  0px 8px 13px rgba(0,0,0,0.1),
+  0px 18px 23px rgba(0,0,0,0.1);
   .card-text {
     color: #fff;
   }
   h1 {
     color: #fff;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+
   }
 }
 #update_status {
@@ -486,20 +508,50 @@
     }
   }
 }
+
+#delete:hover {
+  box-shadow: whitesmoke;
+  transition: ease-in-out .5s;
+  opacity: .9;
+}
+
+
 #update_status {
-  h1 {
+  h1 h2 h3 h4 h5 h6 {
     margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+
+
   }
   .btn {
-    background: #fff;
-    color: #000;
-    border: 1px solid #fff;
+    background-color: #FF7F7F;
+    color: whitesmoke;
+    box-shadow: 8px 5px 5px black;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 6px 10px rgba(0,0,0,0.1),
+    0px 15px 20px rgba(0,0,0,0.1);
     &:hover {
-      background: transparent;
-      color: #fff;
+      opacity: .9;
+      background-color: lightpink;
+      transition: ease-in-out .4s;
     }
   }
 }
+
+.post-submit-btn {
+  background-color: #FF7F7F;
+  color: #FF7F7F;
+  transition: ease-in .5s;
+}
+
+.post-submit-btn:hover {
+  background-color: whitesmoke;
+  transition: ease-out .5s;
+}
+
+
+
 .index-page {
   background-color: #212121;
   .index-body {
@@ -583,3 +635,4 @@
     }
   }
 }
+

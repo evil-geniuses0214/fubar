@@ -1,30 +1,48 @@
 /* INDEX */
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900');
+@import url('http://fonts.cdnfonts.com/css/barbedwire-personal-use');
+
+/** {*/
+/*    font-family: Roboto, sans-serif;*/
+/*}*/
 .index-body {
     margin: auto;
     padding-top: 10px;
     padding-bottom: 10%;
     width: 35%;
+    font-family: 'ROBOTO', sans-serif;
+    font-weight: 600;
 }
+
 .index-padding {
     padding: 10px;
 }
+
+
+.card-bg {
+    background-color: inherit;
+    border: none;
+
+}
+
 #circle-image {
     margin-top: 10px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-left: 10px;
-    
+
 }
+
 #row {
     display: flex;
 }
+
 #column {
     flex: 33.33%;
     padding: 15px;
-    font-size: 10PX;
 }
+
 .border-card {
     padding: 0;
 }
@@ -74,10 +92,10 @@ footer {
 }
 
 .profile-name {
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: 10px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: 75px;
+    margin-left: 15px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .header-main {
@@ -87,11 +105,19 @@ footer {
     z-index: 1000;
     transition: all 0.3s ease;
     box-shadow: 0 5px 8px -1px rgb(0 0 0 / 20%);
+    opacity: .9;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    word-spacing: 2px;
 }
-.header-nav, .navbar-options .nav-link {
+
+.header-nav,
+.navbar-options .nav-link {
     color: #1c2b46;
 }
-.header-nav:hover, .navbar-options .nav-link:hover {
+
+.header-nav:hover,
+.navbar-options .nav-link:hover {
     color: #7952b3;
 }
 
@@ -118,9 +144,11 @@ footer {
     justify-content: space-between;
     align-items: center;
 }
+
 .navbar-options {
     display: flex;
 }
+
 .account {
     color: #fff;
     background-color: #000;
@@ -147,7 +175,10 @@ footer {
     justify-content: center;
     align-items: center;
     align-content: center;
+}
 
+#main-name {
+    font-size: 100px;
 }
 
 .register-holder {
@@ -167,7 +198,9 @@ footer {
     transition: color 0.25s 0.0833333333s;
     position: relative;
 }
-.draw-border::before, .draw-border::after {
+
+.draw-border::before,
+.draw-border::after {
     border: 0 solid transparent;
     box-sizing: border-box;
     content: '';
@@ -178,46 +211,54 @@ footer {
     bottom: 0;
     right: 0;
 }
+
 .draw-border::before {
     border-bottom-width: 4px;
     border-left-width: 4px;
 }
+
 .draw-border::after {
     border-top-width: 4px;
     border-right-width: 4px;
 }
+
 .draw-border:hover {
     color: #f9e9e9;
 }
-.draw-border:hover::before, .draw-border:hover::after {
+
+.draw-border:hover::before,
+.draw-border:hover::after {
     border-color: #f12a2a;
     transition: border-color 0s, width 0.25s, height 0.25s;
     width: 100%;
     height: 100%;
 }
+
 .draw-border:hover::before {
     transition-delay: 0s, 0s, 0.25s;
 }
+
 .draw-border:hover::after {
     transition-delay: 0s, 0.25s, 0s;
 }
 
 .btn {
-    background: none;
-    border: none;
     cursor: pointer;
     line-height: 1.5;
     padding: 1.2em 4em;
     letter-spacing: 0.05rem;
 }
+
 .btn:focus {
     outline: 2px dotted #55d7dc;
 }
+
 .landing-bg {
     width: 100%;
     height: 100%;
     background-size: cover;
 }
+
 .landing-holder {
     display: flex;
     position: relative;
@@ -225,20 +266,23 @@ footer {
     align-items: center;
     height: 100%;
 }
+
 .form-holder {
     max-width: 500px;
     margin: 0 auto;
     width: 100%;
     padding: 30px;
 }
+
 .register-form {
     padding: 100px 0;
-    background-image: linear-gradient(to right,#415436,#9b9c70);
+    background-image: linear-gradient(to right, #415436, #9b9c70);
 }
+
 .edit-form {
     padding: 100px 0;
     background-image: linear-gradient(to right,
-    rgba(255, 31, 31, 0.87),#FD5D5D);
+            rgba(255, 31, 31, 0.87), #FD5D5D);
 }
 
 .form-input {
@@ -251,21 +295,35 @@ footer {
     padding: 0 25px;
     box-shadow: 0 5px 8px -1px rgb(0 0 0 / 20%) !important;
 }
+
 .text-area {
     padding-top: 20px;
     min-height: 120px !important;
 }
+
 .submit-btn {
     font-family: 'Roboto';
-    font-weight: 300;
-    border: 2px solid #000 !important;
-    width: 100%;
+    background-color: black;
+    border: none;
 }
+
 .submit-btn:hover {
-    background-color: #fff !important;
-    color: #000;
-    border-color: #fff !important;
+    background-color: white;
+    color: black;
+    transition: ease-in-out-out .5s;
+    border: none;
 }
+
+.cancel-edit-btn {
+    background-color: black;
+    border: none;
+}
+
+.cancel-edit-btn:hover {
+    background-color: whitesmoke;
+    transition: ease-in-out .5s;
+}
+
 .register-heading {
     text-align: center;
     margin-bottom: 30px;
@@ -274,6 +332,7 @@ footer {
     margin-bottom: 5px;
     font-size: 3.67rem;
 }
+
 .register-text {
     margin-bottom: 100px;
     font-size: 16px;
@@ -293,32 +352,29 @@ footer {
     object-fit: fill;
     display: block;
     height: 15rem;
-    background:  center center no-repeat;
+    background: center center no-repeat;
     border-radius: 10px;
     padding: 0;
-
 }
 
 .weapon-div {
     text-decoration: none;
-    text-shadow:black ;
+    text-shadow: black;
     overflow: hidden;
     color: whitesmoke;
     transition: transform .5s;
-    background: rgba( 255, 255, 255, 0.35 );
+    background: rgba(255, 255, 255, 0.35);
     box-shadow: 1px 1px 3px grey;
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 15px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .weapon-div:hover {
     box-shadow: 1px 8px 20px grey;
     transform: scale3d(1.006, 1.006, 1);
 }
-
 
 .container1 {
     position: absolute;
@@ -351,6 +407,7 @@ footer {
     margin: 0 0 5px;
     padding: 0;
     font-size: 30px;
+    text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
 .h3 {
@@ -359,6 +416,7 @@ footer {
     transform: translateX(-85px);
     margin: 0 0 20px;
     padding: 0;
+    text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
 }
 
 .bio1 {
@@ -370,12 +428,36 @@ footer {
     line-height: 28px;
 }
 
-/*.social {*/
-/*    display: grid;*/
-/*    line-height: 2.5;*/
-/*    transform: translate(260px, -190px);*/
-/*    width: 40px;*/
-/*}*/
 .s-btn {
     color: black;
+}
+
+.card-bg {
+    background-color: inherit;
+    border: none;
+}
+
+.create-post-btn {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    background-color: red;
+    width: 100%;
+    transition: ease-in .5s;
+}
+
+textarea {
+    width: 100%;
+}
+
+.cancel-post-btn {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    background-color: black;
+    width: 100%;
+    transition: ease-in .5s;
+}
+
+.profile-content {
+    background-image: url(./assets/giphyChangingBackground.gif);
+    background-size: cover
 }
