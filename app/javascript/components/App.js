@@ -15,7 +15,6 @@ import Register from "./pages/Register";
 import MarketPlace from "./pages/MarketPlace";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -95,7 +94,6 @@ export default class App extends React.Component {
       .catch((errors) => console.log("Profile error:", errors));
   };
 
-
   render() {
     const { logged_in } = this.props;
 
@@ -107,7 +105,6 @@ export default class App extends React.Component {
 
           <Route exact path="/" component={Landing} />
           <Route exact path="/home" component={Landing} />
-
 
           {/* ABOUT US */}
           <Route path="/aboutus" component={About} />
@@ -146,62 +143,60 @@ export default class App extends React.Component {
 
           {/* EDIT PROFILE */}
           {logged_in && (
-          <Route
-            path="/profileedit/:id"
-            render={(props) => {
-              let id = props.match.params.id;
-              console.log(id);
-              let profile = this.state.profiles.find(
-                (profile) => profile.user_id === +id
-              );
-              return (
-                <Edit updateProfile={this.updateProfile} profile={profile} />
-              );
-            }}
-          />
+            <Route
+              path="/profileedit/:id"
+              render={(props) => {
+                let id = props.match.params.id;
+                console.log(id);
+                let profile = this.state.profiles.find(
+                  (profile) => profile.user_id === +id
+                );
+                return (
+                  <Edit updateProfile={this.updateProfile} profile={profile} />
+                );
+              }}
+            />
           )}
 
           {/* SHOW PROFILE */}
           {logged_in && (
-          <Route
-            path="/show/:id"
-            render={(props) => {
-              let id = props.match.params.id;
-              let profile = this.state.profiles.find(
-                (profile) => profile.id === +id
-              );
-              return (
-                <Show profile={profile} deleteProfile={this.deleteProfile} />
-              );
-            }}
-          />
+            <Route
+              path="/show/:id"
+              render={(props) => {
+                let id = props.match.params.id;
+                let profile = this.state.profiles.find(
+                  (profile) => profile.id === +id
+                );
+                return (
+                  <Show profile={profile} deleteProfile={this.deleteProfile} />
+                );
+              }}
+            />
           )}
 
           {/* REGISTER */}
           {logged_in && (
-          <Route
-            path="/create-profile"
-            render={(props) => <Register createProfile={this.createProfile} />}
-          />
+            <Route
+              path="/create-profile"
+              render={(props) => (
+                <Register createProfile={this.createProfile} />
+              )}
+            />
           )}
 
           {/* NEW POST */}
           {logged_in && (
-          <Route
-            path="/newpost"
-            render={(props) => <NewPost createPost={this.createPost} />}
-          />
+            <Route
+              path="/newpost"
+              render={(props) => <NewPost createPost={this.createPost} />}
+            />
           )}
 
           {/* EDIT POST */}
-          {logged_in && (
-          <Route path="/posts/view" component={PostList} />
-          )}
+          {logged_in && <Route path="/posts/view" component={PostList} />}
 
           {/* MARKETPLACE */}
-          {logged_in && (
-          <Route path="/marketplace" component={MarketPlace} />
-          )}
+          {logged_in && <Route path="/marketplace" component={MarketPlace} />}
 
           {/* NOT FOUND */}
           <Route component={NotFound} />
