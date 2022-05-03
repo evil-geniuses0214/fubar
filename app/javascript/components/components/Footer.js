@@ -15,7 +15,10 @@ export default class Footer extends Component {
             </NavItem>
 
             <NavItem>
-              <NavLink href="" target="_blank">
+              <NavLink
+                href="https://github.com/evil-geniuses0214/fubar"
+                target="_blank"
+              >
                 Docs
               </NavLink>
             </NavItem>
