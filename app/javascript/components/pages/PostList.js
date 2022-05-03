@@ -9,15 +9,15 @@ class PostList extends Component {
     posts: null,
   };
 
-
-
   renderPosts = () => {
     return this.props.posts?.map((post) => {
       return (
         <div key={post.id}>
-          <Card>
+          <Card className="card-bg">
             <CardBody>
-              <CardTitle tag="h5">{post.title}</CardTitle>
+              <CardTitle className="post-color" tag="h5">
+                {post.title}
+              </CardTitle>
               <CardText>{post.content}</CardText>
             </CardBody>
           </Card>

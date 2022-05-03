@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalBody, ModalHeader } from "reactstrap";
-
 class NewPost extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,6 @@ class NewPost extends Component {
       modal: !this.state.modal,
     });
   }
-
 
   handleChange = (e) => {
     let newValue = e.target.value;
@@ -41,19 +39,18 @@ class NewPost extends Component {
       },
       redirect: "error",
       body: JSON.stringify(this.state),
-    })
-      .then((resp) => {
-        this.props.refetchData()
-      })
-      // .then((post) => {
-      //   this.props.history.push("/posts");
-      // });
+    }).then((resp) => {
+      this.props.refetchData();
+    });
+    // .then((post) => {
+    //   this.props.history.push("/posts");
+    // });
   };
 
   render() {
     return (
       <>
-        <Button color="danger" onClick={this.toggle}>
+        <Button className="post-submit-btn" onClick={this.toggle}>
           Update Status
         </Button>
         <Modal
@@ -62,11 +59,11 @@ class NewPost extends Component {
           className={this.props.className}
         >
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+            <ModalHeader toggle={this.toggle}>Update Status</ModalHeader>
             <ModalBody>
               <label htmlFor="title">Title: </label>
               <input type="text" name="title" onChange={this.handleChange} />
-              <label htmlFor="content">Content: </label>
+              <label htmlFor="content"></label>
               <textarea
                 name="content"
                 id=""
@@ -74,11 +71,15 @@ class NewPost extends Component {
                 rows="10"
                 onChange={this.handleChange}
               ></textarea>
-              <Button color="primary" type="submit" onClick={this.toggle}>
-                Create Post
+              <Button
+                className="create-post-btn"
+                type="submit"
+                onClick={this.toggle}
+              >
+                Create - P o s t
               </Button>
-              <Button color="secondary" onClick={this.toggle}>
-                Cancel
+              <Button className="cancel-post-btn" onClick={this.toggle}>
+                C a n c e l
               </Button>
             </ModalBody>
           </form>
@@ -87,5 +88,4 @@ class NewPost extends Component {
     );
   }
 }
-
 export default NewPost;

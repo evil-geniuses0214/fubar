@@ -102,7 +102,6 @@ export default class App extends React.Component {
         <Header {...this.props} />
         <Switch>
           {/* HOME */}
-
           <Route exact path="/" component={Landing} />
           <Route exact path="/home" component={Landing} />
 

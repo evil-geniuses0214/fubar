@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import {Button, Card, CardBody, CardText, Col, Row} from "reactstrap";
-import {NavLink} from "react-router-dom";
+import { Button, Card, CardBody, CardText, Col, Row } from "reactstrap";
+import { NavLink } from "react-router-dom";
 import PostList from "./PostList";
 
 export default class Show extends Component {
@@ -11,7 +11,7 @@ export default class Show extends Component {
     };
   }
   render() {
-    console.log(this.state)
+    console.log(this.state);
     let { profile } = this.props;
     return (
       <div className="show-body">
@@ -21,23 +21,36 @@ export default class Show extends Component {
               <Card id="profile-card-holder">
                 <div id="row" className="profile-bg">
                   <div className="name-holder">
-                    <img className="profile-img" alt="Card image cap" src={profile?.picture} width="50%"/>
+                    <img
+                      className="profile-img"
+                      alt="Card image cap"
+                      src={profile?.picture}
+                      width="50%"
+                    />
                     <CardBody id="column">
-                      <CardText className="profile-name">{profile.name}</CardText>
+                      <CardText className="profile-name">
+                        {profile.name}
+                      </CardText>
                     </CardBody>
                   </div>
                   <CardBody id="delete">
                     <NavLink to="/index">
-                      <Button className="delete-btn" onClick={this.handleDelete}><i className="fa fa-trash"
-                                                                                    aria-hidden="true"></i></Button>
+                      <Button
+                        className="delete-btn"
+                        onClick={this.handleDelete}
+                      >
+                        <i className="fa fa-trash" aria-hidden="true"></i>
+                      </Button>
                     </NavLink>
                   </CardBody>
                   <img
-                      src="https://images.unsplash.com/photo-1508247967583-7d982ea01526?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2250&amp;q=80"
-                      alt="" className="profile-cover"/>
+                    src="https://wallpaperaccess.com/full/5688.jpg"
+                    alt=""
+                    className="profile-cover"
+                  />
                 </div>
               </Card>
-              <br/>
+              <br />
               <Card id="services_holder">
                 <h1>Service</h1>
                 <CardBody>
@@ -56,12 +69,9 @@ export default class Show extends Component {
               <Card id="about_me">
                 <h1>About Me: </h1>
                 <CardBody>
-                  <CardText>
-                    {profile.about_me}
-                  </CardText>
+                  <CardText>{profile.about_me}</CardText>
                 </CardBody>
               </Card>
-
               <Card id="services_holder">
                 <CardBody>
                   <CardText>
@@ -88,12 +98,11 @@ export default class Show extends Component {
                   </CardText>
                 </CardBody>
               </Card>
-
               <Card id="update_status">
                 <CardBody>
                   <CardText>
                     <Col md={12}>
-                      <PostList posts={this.state.posts}/>
+                      <PostList posts={this.state.posts} />
                     </Col>
                   </CardText>
                 </CardBody>
